@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t mattipahkuri/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t mattipa1988/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run mattipahkuri/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t mattipahkuri/multi-client ./client
-  - docker build -t mattipahkuri/multi-nginx ./nginx
-  - docker build -t mattipahkuri/multi-server ./server
-  - docker build -t mattipahkuri/multi-worker ./worker
+  - docker build -t mattipa1988/multi-client ./client
+  - docker build -t mattipa1988/multi-nginx ./nginx
+  - docker build -t mattipa1988/multi-server ./server
+  - docker build -t mattipa1988/multi-worker ./worker
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push mattipahkuri/multi-client
-  - docker push mattipahkuri/multi-nginx
-  - docker push mattipahkuri/multi-server
-  - docker push mattipahkuri/multi-worker
+  - docker push mattipa1988/multi-client
+  - docker push mattipa1988/multi-nginx
+  - docker push mattipa1988/multi-server
+  - docker push mattipa1988/multi-worker
